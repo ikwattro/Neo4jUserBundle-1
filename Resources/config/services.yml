@@ -1,0 +1,20 @@
+parameters:
+    neo4j_user.manager.class: UserBundle\Manager\UserManager
+    neo4j_user.graph_manager.class: UserBundle\GraphManager\GraphManager
+    neo4j_user.proxy_dir: '%kernel.cache_dir%/doctrine/neo4j/Proxies'
+
+services:
+    neo4j_user.graph_manager:
+        class: %neo4j_user.graph_manager.class%
+        arguments: ['localhost', '7474', '%neo4j_user.proxy_dir%']
+    neo4j_user.manager:
+        class: %neo4j_user.manager.class%
+        arguments: ['@security.encoder_factory', '@fos_user.util.username_canonicalizer', '@fos_user.util.email_canonicalizer', '@neo4j_user.graph_manager', '%fos_user.model.user.class%']
+    neo4j_user.user_provider.username:
+        class: UserBundle\Security\UserProvider
+        public: false
+        arguments: ['@neo4j_user.manager']
+    user.registration.form.type:
+        class: UserBundle\Form\Type\RegistrationFormType
+        tags:
+            - { name: form.type, alias: user_registration }

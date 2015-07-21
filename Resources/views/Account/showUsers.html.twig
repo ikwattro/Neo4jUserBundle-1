@@ -1,0 +1,9 @@
+{% extends '::base.html.twig' %}
+{% block content %}
+    <h1>get all users:</h1>
+    <ul>
+    {% for user in users %}
+        <li>{{ user['n'].getProperty('email') }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
