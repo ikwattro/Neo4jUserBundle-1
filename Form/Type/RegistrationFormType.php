@@ -1,6 +1,6 @@
 <?php
-// UserBundle/Form/Type/UserType.php
-namespace UserBundle\Form\Type;
+// Neo4jUserBundle/Form/Type/UserType.php
+namespace Neo4jUserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -35,7 +35,7 @@ class RegistrationFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'UserBundle\Entity\User'
+            'data_class' => 'Neo4jUserBundle\Entity\User'
         ));
     }
 }

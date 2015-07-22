@@ -1,11 +1,11 @@
 <?php
-// src/UserBundle/Entity/User.php
-namespace UserBundle\Entity;
+// src/Neo4jUserBundle/Entity/User.php
+namespace Neo4jUserBundle\Entity;
 
 
 use HireVoice\Neo4j\Annotation as OGM;
 use Doctrine\Common\Collections\ArrayCollection;
-use UserBundle\Node\User as BaseUser;
+use Neo4jUserBundle\Node\User as BaseUser;
 
 /**
  * @OGM\Entity(labels="User")
