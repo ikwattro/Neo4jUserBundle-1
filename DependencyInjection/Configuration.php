@@ -1,10 +1,7 @@
 <?php
-
-namespace Neo4jUserBundle\DependencyInjection;
-
+namespace UserBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-
 /**
  * This is the class that validates and merges configuration from your app/config files
  *
@@ -13,16 +10,19 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 class Configuration implements ConfigurationInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('neo4j_user');
-        $rootNode->children()
-            ->scalarNode('host')->end()
-            ->scalarNode('port')->end()
+        
+        $rootNode
+            ->children()
+                ->scalarNode('host')->defaultValue('localhost')->end()
+                ->scalarNode('port')->defaultValue('7474')->end()
             ->end();
+            
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
         // more information on that topic.

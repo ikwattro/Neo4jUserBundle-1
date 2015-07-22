@@ -1,5 +1,5 @@
 <?php
-namespace Neo4jUserBundle\Manager;
+namespace UserBundle\Manager;
 
 use FOS\UserBundle\Util\CanonicalizerInterface;
 use FOS\UserBundle\Model\UserManagerInterface as BaseUserManagerInterface;
@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Neo4jUserBundle\GraphManager\GraphManager;
+use UserBundle\GraphManager\GraphManager;
 
 /**
  * Class that implements the FOSUserManagerInterface

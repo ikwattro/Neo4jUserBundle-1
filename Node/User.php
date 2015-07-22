@@ -1,5 +1,5 @@
 <?php
-namespace Neo4jUserBundle\Node;
+namespace UserBundle\Node;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\GroupableInterface;
 use FOS\UserBundle\Model\GroupInterface;

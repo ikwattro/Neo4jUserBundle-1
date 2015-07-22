@@ -1,6 +1,5 @@
 <?php
-
-namespace Neo4jUserBundle\DependencyInjection;
+namespace UserBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -15,26 +14,26 @@ use Symfony\Component\DependencyInjection\Loader;
 class Neo4jUserExtension extends Extension
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-        
         $conf = $this->remapParametersNamespaces($config);
-        
         foreach($conf as $key => $value)
         {
             $container->setParameter($key, $value);
         }
-        
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.yml');
     }
     
     public function getConfigNamespace()
     {
         return 'neo4j_user';
     }
+    
     public function remapParametersNamespaces(array $config = array())
     {
         $conf = array();
@@ -45,6 +44,4 @@ class Neo4jUserExtension extends Extension
         }
         return $conf;
     }
-    
-
 }
