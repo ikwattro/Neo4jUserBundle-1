@@ -57,7 +57,9 @@ class UserManager implements BaseUserManagerInterface, UserProviderInterface
     }
 	public function findUserBy(array $criteria)
 	{
-		return $this->repository->findOneBy($criteria);
+		$user = $this->repository->findOneBy($criteria);
+        //var_dump($user);
+        //exit();
 	}
 /**
      * Finds a user by username
@@ -68,7 +70,7 @@ class UserManager implements BaseUserManagerInterface, UserProviderInterface
      */
     public function findUserByUsername($username)
     {
-        return $this->findUserBy(array('usernameCanonical' => $this->canonicalizeUsername($username)));
+        $this->findUserBy(array('usernameCanonical' => $this->canonicalizeUsername($username)));
     }
     /**
      * Finds a user by email

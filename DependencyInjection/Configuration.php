@@ -22,6 +22,8 @@ class Configuration implements ConfigurationInterface
         $rootNode->children()
             ->scalarNode('host')->end()
             ->scalarNode('port')->end()
+            ->scalarNode('user')->end()
+            ->scalarNode('password')->end()
             ->end();
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for

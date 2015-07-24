@@ -7,13 +7,13 @@ parameters:
 services:
     neo4j.graph_manager:
         class: %neo4j.graph_manager.class%
-        arguments: ['%neo4j_user.host%', '%neo4j_user.port%', '%neo4j_user.proxy_dir%']
+        arguments: ['%neo4j_user.host%', '%neo4j_user.port%', '%neo4j_user.proxy_dir%', '%neo4j_user.user%', '%neo4j_user.password%']
     neo4j.user_manager:
         class: %neo4j.user_manager.class%
         arguments: ['@security.encoder_factory', '@fos_user.util.username_canonicalizer', '@fos_user.util.email_canonicalizer', '@neo4j.graph_manager', '%fos_user.model.user.class%']
     neo4j.user_provider.username:
         class: Neo4jUserBundle\Security\UserProvider
-        public: false
+        #public: false
         arguments: ['@neo4j.user_manager']
     user.registration.form.type:
         class: Neo4jUserBundle\Form\Type\RegistrationFormType
